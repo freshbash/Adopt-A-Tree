@@ -1,0 +1,25 @@
+{
+  "name": "runverve",
+  "version": "1.0.0",
+  "description": "Backend for the Adopt a Tree CSR initiative of RunVerve",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "devStart": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhashwar Sengupta",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg-promise": "^11.5.4"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.2"
+  }
+}
