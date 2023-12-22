@@ -1,5 +1,6 @@
 const db = require('../config/databaseConfig')
 
+// Table definitions
 async function createTables() {
   try {
     await db.none(`

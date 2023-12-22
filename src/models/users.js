@@ -1,5 +1,7 @@
 const db = require('../config/databaseConfig')
 
+//Methods to retrieve data from users table
+
 //addUser(name, email, hash)
 async function addUser(name, email, hash) {
     try {

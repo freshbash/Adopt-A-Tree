@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 const User = require('../models/users');
 
-// Define controller functions
+// functions for user authentication
 const authController = {
     login: (req, res) => {
         res.status(200).json({ message: 'success', redirectTo: '/api/dashboard' })

@@ -1,7 +1,7 @@
-//Load invironment variables in development mode
-if (process.env.NODE_ENV != 'production') {
-    require('dotenv').config()
-}
+//Entry point of the application
+
+
+require('dotenv').config()
 
 const app = require('./app')
 const createTables = require('./models');

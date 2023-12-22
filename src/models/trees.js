@@ -1,5 +1,7 @@
 const db = require('../config/databaseConfig')
 
+//Methods to retrieve data from trees table
+
 //getTreeByUserId(userid)
 async function getTreeCountByUserId(userid) {
     try {

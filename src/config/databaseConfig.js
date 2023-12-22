@@ -1,6 +1,5 @@
-if (process.env.NODE_ENV != 'production') {
-    require('dotenv').config()
-}
+// Initial configuration for pg-promise(interface for postgres database)
+require('dotenv').config()
 
 const connectionObject = {
     host: process.env.HOST,
