@@ -10,15 +10,15 @@
 ## Tables in Database
 - users: Stores user data
     - Schema:
-    id: primary key
-    name
-    email
-    hashedPassword
+        - id: primary key
+        - name
+        - email
+        - hashedPassword
 
 - trees: Stores the owner of the each tree
     - Schema:
-    id: primary key
-    owner: foreign key references users.id
+        - id: primary key
+        - owner: foreign key references users.id
 
 ## File structure
 - src: Contains all the functionality files
@@ -44,57 +44,57 @@
 
 ### /user/register
 
-request-type : POST,
-content-type: json
-json structure :
+-request-type : POST,
+-content-type: json
+-json structure :
 
     {
         "name": "fresh",
         "email": "fresh@email.com",
         "password": "hello123
     }
-response-type : json
+-response-type : json
 
 It takes this data and adds it to the database after hashing the password returning a success message in response where the frontend can
 load the required page.
 
 ### /user/login
 
-request-type : POST,
-content-type : json,
-json structure :
+-request-type : POST,
+-content-type : json,
+-json structure :
 
     {
         "email": "fresh@email.com",
         "password": "hello123"
     }
-response-type : json
+-response-type : json
 
 The json data is used to authenticate the user using Passport.js authentication and user data is then added into a session store to persist login status across requests, and a success message is sent back as a response
 
 ### /user/logout
 
-request-type : POST,
-content-type : none,
-response-type : json
+-request-type : POST,
+-content-type : none,
+-response-type : json
 
 Logs the user out and removes user data from the session store. Sends a success message as a response.
 
 ### /api/dashboard
 
-request-type : GET,
-content-type : none,
-response-type : json
+-request-type : GET,
+-content-type : none,
+-response-type : json
 
 Gets the user's name, the number of trees adopted by them and their current share in the farm based on the number of trees adopted. The user's share is calculated by dividing number of trees adopted by the user by the total number of trees.
 
 ### /api/adopt
 
-request-type : POST,
-content-type : json,
+-request-type : POST,
+-content-type : json,
 json structure : {
     "count" : 4
 }
-response-type : json
+-response-type : json
 
 Takes in the number of trees adopted by the user and creates that many entries in the "trees" table, all attributed to that particular user.
