@@ -9,7 +9,8 @@ app.use(express.json())
 
 
 const passport = require("passport")
-const session = require('express-session')
+const session = require('express-session');
+
 const routes = require('./routes')
 
 //In memory session store

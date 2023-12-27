@@ -8,6 +8,7 @@ const authController = {
         res.status(200).json({ message: 'success', redirectTo: '/api/dashboard' })
     },
     register: async (req, res) => {
+        if (req.isAuthenticated()) return res.status(403).json({message: 'fail'})
         try {
             const { name, email, password } = req.body
             const hashedPassword = await bcrypt.hash(password, 10)
@@ -18,6 +19,7 @@ const authController = {
         }
     },
     logout: (req, res, next) => {
+        if (!req.isAuthenticated()) return res.status(403).json({message: 'fail'})
         req.logout((err) => {
             if (err) { return next(err) }
         })

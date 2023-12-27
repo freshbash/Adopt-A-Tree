@@ -4,6 +4,7 @@ const Tree = require('../models/trees')
 const apiControllers = {
     getUserDetails: async(req, res) => {
         //Logic to get all information related to req.user
+        if (!req.isAuthenticated()) return res.status(403).json({message: 'fail'})
         try{
             let donator = {};
             const user = await User.findUserById(req.user.id);
@@ -12,16 +13,16 @@ const apiControllers = {
             const donatorTrees = await Tree.getTreeCountByUserId(req.user.id);
             const totalTrees = await Tree.getTreeCount();
 
-            const share = donatorTrees / totalTrees * 100;
+            const share = (donatorTrees / totalTrees * 100).toFixed(2);
 
             donator.numTrees = donatorTrees;
             donator.share = share + "%";
 
-            res.status(200).json({message: 'success', userData: donator})
+            return res.status(200).json({message: 'success', userData: donator})
         }
         catch(e) {
             console.log(e);
-            res.status(500).json({message: 'fail'})
+            return res.status(500).json({message: 'fail'})
         }
     },
     adoptTree: async(req, res) => {
@@ -32,18 +33,17 @@ const apiControllers = {
                     count: (Number)
                 }
                 */
-
-
+        if (!req.isAuthenticated()) return res.status(403).json({message: 'fail'})
         try {
             const count = req.body.count;
 
             for (let i = 0; i < count; i++) {
                 await Tree.addTree(req.user.id);
             }
-            res.status(201).json({message: 'success', redirectTo: '/api/dashboard'})
+            return res.status(201).json({message: 'success', redirectTo: '/api/dashboard'})
         }
         catch {
-            res.status(400).json({message: 'fail'})
+            return res.status(400).json({message: 'fail'})
         }
     }
 }

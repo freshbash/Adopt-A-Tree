@@ -1,17 +1,17 @@
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return next()
+        next(req, res)
+    } else {
+        return res.status(403).json({message: 'fail'})
     }
-
-    res.redirect('/')
 }
 
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        res.redirect('/')
+        return res.status(403).json({message: 'fail'})
+    } else {
+        return next()
     }
-
-    next()
 }
 
 module.exports = { checkAuthenticated, checkNotAuthenticated }

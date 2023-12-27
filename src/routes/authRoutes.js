@@ -1,7 +1,6 @@
 const router = require('express').Router()
-const passport = require('../config/passportConfig')
 const authenticationController = require('../controllers/authControllers')
-const { ensureAuth, ensureNotAuth } = require('../middleware/authenticationMiddleware')
+const passport = require('../config/passportConfig')
 
 //Routes related to user authentication
 
